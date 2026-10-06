@@ -43,8 +43,8 @@ flowchart LR
     CP --> AD
     SA --> AD
 
-    AD ==> BD
-    AD ==> GW
+    AD --> BD
+    AD --> GW
 
     BD --> GA4
     BD --> GADS
