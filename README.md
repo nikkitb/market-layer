@@ -19,44 +19,25 @@ Market Layer sits between the Shoper storefront event bus and destination platfo
 ```mermaid
 flowchart LR
 
-    subgraph SF["SHOPER STOREFRONT"]
-        direction TB
-        EB["Shoper Event Bus"]
-        CP["Customer Privacy API"]
-        SA["useStorefront API"]
-    end
+    EB["Shoper Event Bus"]
+    CP["Customer Privacy API"]
+    SA["useStorefront API"]
 
-    subgraph ML["MARKET LAYER"]
-        direction LR
+    AD["Signal Adapter<br/>normalize · market · consent · identity"]
 
-        AD["Signal Adapter<br/><small>normalize · market · consent · identity</small>"]
+    BD["Browser Delivery"]
+    GW["Cloudflare Gateway<br/>/v1/events"]
 
-        subgraph DELIVERY["DELIVERY"]
-            direction TB
-            BD["Browser Delivery"]
-            GW["Cloudflare Gateway<br/><small>/v1/events</small>"]
-        end
+    GA4["GA4"]
+    GADS["Google Ads"]
+    META["Meta Pixel"]
 
-        CFG[("D1<br/>Config + Dedup")]
+    GA4S["GA4 Measurement Protocol"]
+    MCAPI["Meta CAPI"]
 
-        INS["Live Signal<br/>Inspector"]
-        PANEL["Client Panel"]
-    end
-
-    subgraph DEST["MEASUREMENT DESTINATIONS"]
-        direction TB
-
-        subgraph WEB["Browser"]
-            GA4["GA4"]
-            GADS["Google Ads"]
-            META["Meta Pixel"]
-        end
-
-        subgraph SERVER["Server"]
-            GA4S["GA4<br/>Measurement Protocol"]
-            MCAPI["Meta CAPI"]
-        end
-    end
+    CFG[("D1<br/>Config + Dedup")]
+    PANEL["Client Panel"]
+    INS["Live Signal Inspector"]
 
     EB --> AD
     CP --> AD
@@ -72,11 +53,11 @@ flowchart LR
     GW --> GA4S
     GW --> MCAPI
 
-    CFG -. config .-> AD
-    CFG -. config / dedup .-> GW
-    CFG -. config .-> PANEL
+    CFG -.->|config| AD
+    CFG -.->|config / dedup| GW
+    CFG -.->|config| PANEL
 
-    AD -. observe .-> INS
+    AD -.->|observe| INS
 ```
 
 ## Event Pipeline
