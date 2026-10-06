@@ -18,41 +18,65 @@ Market Layer sits between the Shoper storefront event bus and destination platfo
 
 ```mermaid
 flowchart LR
-    subgraph Storefront
-        A[Shoper Event Bus]
-        B[Customer Privacy API]
-        C[useStorefront API]
+
+    subgraph SF["SHOPER STOREFRONT"]
+        direction TB
+        EB["Shoper Event Bus"]
+        CP["Customer Privacy API"]
+        SA["useStorefront API"]
     end
 
-    subgraph Market Layer
-        D[Signal Adapter<br/>browser module]
-        E[Cloudflare Worker<br/>/v1/events]
-        F[Config + D1]
-        G[Client Panel]
-        H[Live Signal Inspector]
+    subgraph ML["MARKET LAYER"]
+        direction LR
+
+        AD["Signal Adapter<br/><small>normalize · market · consent · identity</small>"]
+
+        subgraph DELIVERY["DELIVERY"]
+            direction TB
+            BD["Browser Delivery"]
+            GW["Cloudflare Gateway<br/><small>/v1/events</small>"]
+        end
+
+        CFG[("D1<br/>Config + Dedup")]
+
+        INS["Live Signal<br/>Inspector"]
+        PANEL["Client Panel"]
     end
 
-    subgraph Destinations
-        I[GA4 Browser]
-        J[Google Ads Browser]
-        K[Meta Pixel]
-        L[GA4 Measurement Protocol]
-        M[Meta CAPI]
+    subgraph DEST["MEASUREMENT DESTINATIONS"]
+        direction TB
+
+        subgraph WEB["Browser"]
+            GA4["GA4"]
+            GADS["Google Ads"]
+            META["Meta Pixel"]
+        end
+
+        subgraph SERVER["Server"]
+            GA4S["GA4<br/>Measurement Protocol"]
+            MCAPI["Meta CAPI"]
+        end
     end
 
-    A --> D
-    B --> D
-    C --> D
-    D --> I
-    D --> J
-    D --> K
-    D --> E
-    E --> L
-    E --> M
-    F --> D
-    F --> E
-    F --> G
-    D --> H
+    EB --> AD
+    CP --> AD
+    SA --> AD
+
+    AD ==> BD
+    AD ==> GW
+
+    BD --> GA4
+    BD --> GADS
+    BD --> META
+
+    GW --> GA4S
+    GW --> MCAPI
+
+    CFG -. config .-> AD
+    CFG -. config / dedup .-> GW
+    CFG -. config .-> PANEL
+
+    AD -. observe .-> INS
 ```
 
 ## Event Pipeline
