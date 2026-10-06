@@ -1,0 +1,70 @@
+{
+  "eventId": "550e8400-e29b-41d4-a716-446655440000",
+  "market": {
+    "hostname": "shop.example.com",
+    "language": "en",
+    "pathname": "/order/confirm"
+  },
+  "consent": {
+    "analytics_storage": "granted",
+    "ad_storage": "granted",
+    "ad_user_data": "granted",
+    "ad_personalization": "granted",
+    "shoper": {
+      "analyticsConsent": true,
+      "marketingConsent": true,
+      "functionalConsent": true,
+      "platformAnalyticsConsent": true
+    },
+    "googleConsentMode": {
+      "analytics_storage": "granted",
+      "ad_storage": "granted",
+      "ad_user_data": "granted",
+      "ad_personalization": "granted"
+    }
+  },
+  "ga4": {
+    "event": "purchase",
+    "params": {
+      "transaction_id": "DEMO-ORDER-1001",
+      "currency": "USD",
+      "value": 149.99,
+      "items": [
+        {
+          "item_id": "DEMO-SKU-001",
+          "item_name": "Sample Widget",
+          "item_brand": "Example Co",
+          "item_category": "Hardware",
+          "price": 149.99,
+          "quantity": 1
+        }
+      ]
+    }
+  },
+  "meta": {
+    "event_name": "Purchase",
+    "event_id": "550e8400-e29b-41d4-a716-446655440000",
+    "custom_data": {
+      "currency": "USD",
+      "value": 149.99,
+      "content_type": "product",
+      "content_ids": ["DEMO-SKU-001"],
+      "contents": [
+        {
+          "id": "DEMO-SKU-001",
+          "quantity": 1,
+          "item_price": 149.99
+        }
+      ],
+      "num_items": 1
+    },
+    "user_data": {
+      "em": ["5d41402abc4b2a76b9719d911017c592"],
+      "ph": [],
+      "fn": ["7b7bc2512ee1fedcd76bdc68926d4f7b"]
+    }
+  },
+  "pageUrl": "https://shop.example.com/order/confirm",
+  "fbp": "fb.1.1690000000000.0000000000",
+  "fbc": "fb.1.1690000000000.IwAR0000000000000000000"
+}

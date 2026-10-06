@@ -1,0 +1,65 @@
+{
+  "version": 1,
+  "markets": {
+    "pl": {
+      "enabled": true,
+      "hostname": "shop.example.com",
+      "language": "pl",
+      "ga4": {
+        "measurementId": "G-XXXXXXXXXX",
+        "serverEnabled": true
+      },
+      "googleAds": {
+        "conversionId": "AW-XXXXXXXXXX",
+        "purchaseLabel": "DEMO_LABEL",
+        "beginCheckoutLabel": "",
+        "serverEnabled": false
+      },
+      "meta": {
+        "pixelId": "000000000000000",
+        "serverEnabled": true,
+        "secretConfigured": true
+      }
+    },
+    "de": {
+      "enabled": true,
+      "hostname": "de.example.com",
+      "language": "de",
+      "ga4": {
+        "measurementId": "G-YYYYYYYYYY",
+        "serverEnabled": true
+      },
+      "googleAds": {
+        "conversionId": "AW-YYYYYYYYYY",
+        "purchaseLabel": "",
+        "beginCheckoutLabel": "",
+        "serverEnabled": false
+      },
+      "meta": {
+        "pixelId": "000000000000000",
+        "serverEnabled": false,
+        "secretConfigured": false
+      }
+    },
+    "en": {
+      "enabled": true,
+      "hostname": "example.com",
+      "language": "en",
+      "ga4": {
+        "measurementId": "G-ZZZZZZZZZZ",
+        "serverEnabled": true
+      },
+      "googleAds": {
+        "conversionId": "AW-ZZZZZZZZZZ",
+        "purchaseLabel": "",
+        "beginCheckoutLabel": "",
+        "serverEnabled": false
+      },
+      "meta": {
+        "pixelId": "000000000000000",
+        "serverEnabled": false,
+        "secretConfigured": false
+      }
+    }
+  }
+}
